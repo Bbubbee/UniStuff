@@ -1,0 +1,2 @@
+ghbour == target: 
+                    break 
