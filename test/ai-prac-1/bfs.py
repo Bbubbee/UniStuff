@@ -35,23 +35,35 @@ def bfs_actual_search(graph, start, target):
     visited = set()
     queue = deque([start])
     
-    while queue:
+    # Path to goal 
+    path: list = []
+    path.append(start)
+    
+    found: bool = False
+    
+    while queue :
+        # Explore node
         vertex = queue.popleft()
         visited.add(vertex) 
         
-        # Explore the neighbours of the node 
+        # Expand neighbours
         for neighbour in graph[vertex]:
-            
-            # Ensure we have not visited this neighbour node yet
+
             if neighbour not in visited: 
                 queue.append(neighbour)
                 
-                
-                if neighbour == target: 
+                # Check if 
+                if neighbour == target:
+                    found = True
                     break
                 
+                # Expand the neighbours into the queue
                 
-    print(visited) 
+                
+    
+        if found: break 
+                
+    # print(queue) 
         
         
         
@@ -62,5 +74,5 @@ if __name__ == "__main__":
     # Graph of connected nodes
     graph = { 0: [1, 2, 3], 1: [0, 2], 2: [0, 1, 4], 3: [0], 4: [2] }
     
-    bfs_actual_search(graph, 3, 4)
+    bfs_actual_search(graph, 4, 3)
     
